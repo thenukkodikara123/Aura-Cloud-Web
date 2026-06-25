@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aura Cloud™ — Next-Gen Hosting</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        dark:"#05050c",
+        aura:"#a855f7",
+        aurablue:"#38bdf8"
+      }
+    }
+  }
+}
+</script>
+
+<style>
+html{scroll-behavior:smooth}
+.glow{box-shadow:0 0 30px rgba(168,85,247,.35)}
+.reveal{opacity:0;transform:translateY(40px);transition:.8s}
+.reveal.active{opacity:1;transform:none}
+.slider{animation:scroll 60s linear infinite;display:flex;width:max-content}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* hover only for cards / buttons / nav */
+.hover-fade{
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.hover-fade:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 40px rgba(168,85,247,.5);
+}
+
+/* Landing page load animation */
+.load-in{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s cubic-bezier(.16,1,.3,1);
+}
+.load-in.show{
+  opacity:1;
+  transform:none;
+}
+.delay-1{transition-delay:.1s}
+.delay-2{transition-delay:.2s}
+.delay-3{transition-delay:.3s}
+.delay-4{transition-delay:.4s}
+.delay-5{transition-delay:.5s}
+</style>
+</head>
+
+<body class="bg-dark text-white overflow-x-hidden">
+
+<!-- NAV -->
+<header class="load-in delay-1 fixed top-0 w-full bg-dark/70 backdrop-blur border-b border-white/10 z-50">
+  <div class="max-w-7xl mx-auto px-8 py-4 grid grid-cols-3 items-center">
+
+    <div class="flex items-center gap-2">
+      <img src="logo.webp" class="w-9">
+      <h1 class="font-black text-aura text-xl">Aura Cloud™</h1>
+    </div>
+
+    <nav class="hidden md:flex justify-center gap-10 text-white/70 font-semibold">
+      <a href="index.html" class="hover-fade hover:text-white">Home</a>
+      <a href="Services.html" class="hover-fade hover:text-white">Services</a>
+      <a href="About Us.html" class="hover-fade hover:text-white">About Us</a>
+      <a href="Contact.html" class="hover-fade hover:text-white">Contact Us</a>
+      
+    </nav>
+
+    <div class="flex justify-end items-center gap-6">
+     
+      <a href="https://control.auracloud.dpdns.org/" class="hidden md:block text-white/70 hover-fade hover:text-white">Control Panel</a>
+  
+    </div>
+
+  </div>
+</header>
+
+  <!-- HERO -->
+  <section id="home" class="relative pt-40 pb-32 max-w-7xl mx-auto px-8 reveal">
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+
+      <div>
+        <h2 class="text-5xl font-black leading-tight">
+          <img src="logo.webp" class="inline w-12 mb-2"> Aura Cloud™<br>
+          Next-Gen <span class="text-aura">Cloud Hosting</span>
+        </h2>
+
+        <p class="text-white/60 mt-6 max-w-xl">
+          High-performance hosting for bots, games, websites & cloud workloads.
+        </p>
+
+        <div class="mt-8 flex gap-4">
+          <a href="Services.html" class="hover-fade px-7 py-3 rounded-xl backdrop-blur bg-white/10 border border-white/20 glow font-bold">
+            Explore Platform
+          </a>
+
+          <a href="https://discord.gg/qJVqpdnHBM" target="_blank"
+            class="hover-fade px-7 py-3 rounded-xl border border-[#5865F2] text-[#5865F2] glow hover:bg-[#5865F2]/20 font-bold">
+            <i class="fa-brands fa-discord"></i> Join Discord
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-[#0b0f1a] border border-white/10 rounded-3xl p-6 glow hover-fade text-left space-y-5">
+
+        <!-- Top Bar -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+            <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
+            <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+            <p class="ml-3 text-white/50 text-sm">Server Dashboard</p>
+          </div>
+          <span class="text-green-400 text-sm font-bold">● Live</span>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="grid grid-cols-3 gap-4 text-center">
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <p class="text-white/50 text-xs">Players</p>
+            <h3 class="text-2xl font-black text-aura" id="players">0</h3>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <p class="text-white/50 text-xs">CPU</p>
+            <h3 class="text-2xl font-black text-aurablue" id="cpu">0%</h3>
+          </div>
+          <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+            <p class="text-white/50 text-xs">RAM</p>
+            <h3 class="text-2xl font-black text-purple-400" id="ram">0GB</h3>
+          </div>
+        </div>
+
+        
+        <div class="bg-white/5 p-4 rounded-xl border border-white/10">
+          <p class="text-white/50 text-xs mb-2">Performance</p>
+          <div class="h-16 flex items-end gap-1">
+            <div class="bg-aura w-2 rounded-t" style="height:30%"></div>
+            <div class="bg-aura w-2 rounded-t" style="height:40%"></div>
+            <div class="bg-aura w-2 rounded-t" style="height:35%"></div>
+            <div class="bg-aura w-2 rounded-t" style="height:50%"></div>
+            <div class="bg-aura w-2 rounded-t" style="height:45%"></div>
+            <div class="bg-aura w-2 rounded-t" style="height:60%"></div>
+            <div class="bg-aura w-2 rounded-t" style="height:55%"></div>
+            <div class="bg-aura w-2 rounded-t" style="height:70%"></div>
+          </div>
+        </div>
+
+        <!-- Console -->
+        <div class="bg-black/40 p-4 rounded-xl border border-white/10 font-mono text-xs text-green-400 space-y-1">
+          <p>[INFO] Server started on port 19130</p>
+          <p>[LOAD] Loading world... Done (1.8s)</p>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <!-- SCROLL TO DISCOVER -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-center">
+      <p class="text-xs tracking-[0.3em] text-white/60 mb-3">SCROLL TO DISCOVER</p>
+      <div class="w-7 h-12 border-2 border-white/30 rounded-full flex justify-center mx-auto">
+        <span class="w-1.5 h-3 bg-white/60 rounded-full mt-2 animate-bounce"></span>
+      </div>
+    </div>
+
+  </section>
+
+
+<!-- STATS -->
+<section id="stats" class="max-w-7xl mx-auto px-8 mb-32 reveal">
+<div class="grid md:grid-cols-4 gap-8 text-center">
+
+<div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+<h3 class="text-4xl font-black text-aura" data-count="250">0</h3>
+<p class="text-white/60">Active Clients</p>
+</div>
+
+<div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+<h3 class="text-4xl font-black text-aura" data-count="99.9">0</h3>
+<p class="text-white/60">Uptime SLA</p>
+</div>
+
+<div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+<h3 class="text-4xl font-black text-aura" data-count="15">0</h3>
+<p class="text-white/60">Global Locations</p>
+</div>
+
+<div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+<h3 class="text-4xl font-black text-aura" data-count="3">-0</h3>
+<p class="text-white/60">Avg Latency (ms)</p>
+</div>
+
+</div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="max-w-7xl mx-auto px-8 mb-32 reveal">
+<h2 class="text-4xl font-black mb-10">Aura Cloud™ Features</h2>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- High Performance -->
+    <div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+      <h3 class="text-xl font-bold mb-2">⚡ High Performance</h3>
+      <p class="text-white/60 mb-4">
+        NVMe SSD storage with sub-3ms latency and dedicated resources for optimal gaming.
+      </p>
+    
+    </div>
+
+    <!-- DDoS Protection -->
+    <div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+      <h3 class="text-xl font-bold mb-2">🛡 DDoS Protection</h3>
+      <p class="text-white/60 mb-4">
+        Multi-layer protection up to 800 Gbps keeping your servers secure 24/7.
+      </p>
+  
+    </div>
+
+    <!-- Global Network -->
+    <div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+      <h3 class="text-xl font-bold mb-2">🌍 Global Network</h3>
+      <p class="text-white/60 mb-4">
+        15+ strategic locations worldwide ensuring low latency for players anywhere.
+      </p>
+     
+    </div>
+
+    <!-- Auto Scaling -->
+    <div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+      <h3 class="text-xl font-bold mb-2">📈 Auto Scaling</h3>
+      <p class="text-white/60 mb-4">
+        Automatically scale resources based on demand without any downtime.
+      </p>
+ 
+    </div>
+
+    <!-- Real-time Analytics -->
+    <div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+      <h3 class="text-xl font-bold mb-2">📊 Real-time Analytics</h3>
+      <p class="text-white/60 mb-4">
+        Comprehensive monitoring with detailed metrics and performance insights.
+      </p>
+  
+    </div>
+
+    <!-- Expert Support -->
+    <div class="p-8 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+      <h3 class="text-xl font-bold mb-2">🎧 Expert Support</h3>
+      <p class="text-white/60 mb-4">
+        24/7 technical support from experienced gaming infrastructure specialists.
+      </p>
+     
+    </div>
+
+  </div>
+
+</div>
+</section>
+  <section id="plans" class="max-w-7xl mx-auto px-8 mb-32 reveal">
+
+    <p class="text-center text-aurablue uppercase tracking-widest">Our Plans</p>
+    <h2 class="text-center text-4xl font-black mb-16">Powerful Hosting Solutions</h2>
+
+    <div class="grid md:grid-cols-3 gap-10">
+
+      <!-- Bot Hosting -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 glow hover-fade flex flex-col justify-between">
+        <div>
+          <h3 class="text-2xl font-bold mb-3">🤖 Bot Hosting</h3>
+          <p class="text-white/60 mb-6">
+            High-performance hosting for Discord bots, automation tools, and custom applications.
+            24/7 uptime, fast deployment, and reliable performance.
+            <br>
+            <span class="text-white/40">Custom plans available.</span>
+
+          </p>
+        </div>
+        <a href="Services.html" class="mt-4 inline-block text-aura font-semibold hover:underline">
+          Learn more →
+        </a>
+        </a>
+      </div>
+
+      <!-- Web Hosting -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 glow hover-fade flex flex-col justify-between">
+        <div>
+          <h3 class="text-2xl font-bold mb-3">🌐 Web Hosting</h3>
+          <p class="text-white/60 mb-6">
+            Fast and secure hosting for websites, dashboards, and web applications with optimized
+            performance and high reliability.
+            <br>
+            <span class="text-white/40">Custom plans available.</span>
+          </p>
+        </div>
+        <a href="Services.html" class="mt-4 inline-block text-aura font-semibold hover:underline">
+          Learn more →
+        </a>
+      </div>
+
+      <!-- Game Hosting -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 glow hover-fade flex flex-col justify-between">
+        <div>
+          <h3 class="text-2xl font-bold mb-3">🎮 Game Hosting</h3>
+          <p class="text-white/60 mb-6">
+            Host popular games like <span class="text-white">Hytale, Minecraft, Rust</span> and more with
+            ultra-low latency and powerful hardware built for smooth gameplay.
+            <br>
+            <span class="text-white/40">Custom plans available.</span>
+          </p>
+        </div>
+        <a href="Services.html" class="mt-4 inline-block text-aura font-semibold hover:underline">
+          Learn more →
+        </a>
+      </div>
+
+      <!--vpn Hosting -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 glow hover-fade flex flex-col justify-between">
+        <div>
+          <h3 class="text-2xl font-bold mb-3">🛜 V2RAY</h3>
+          <p class="text-white/60 mb-6">
+            Fast,secure and reliable. Explore the internet in the safe way with
+            unlimited data.
+            <br>
+            <span class="text-white/40">Custom plans available.</span>
+          </p>
+        </div>
+        <a href="Services.html" class="mt-4 inline-block text-aura font-semibold hover:underline">
+          Learn more →
+        </a>
+      </div>
+
+      <!-- VPS Hosting -->
+      <div class="bg-white/5 border border-white/10 rounded-3xl p-8 glow hover-fade flex flex-col justify-between md:col-span-3">
+        <div>
+          <h3 class="text-2xl font-bold mb-3">☁ VPS Hosting</h3>
+          <p class="text-white/60 mb-6 max-w-3xl">
+            Flexible Virtual Private Servers with dedicated resources, full control, and scalable power
+            for advanced users and businesses running custom workloads.
+            <br>
+            <span class="text-white/40">Custom plans available.</span>
+          </p>
+        </div>
+        <a href="Services.html" class="mt-4 inline-block text-aura font-semibold hover:underline">
+          Learn more →
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="mb-32 reveal overflow-hidden">
+<p class="text-center text-aurablue uppercase tracking-widest">Reviews</p>
+<h2 class="text-center text-4xl font-black mb-12">Loved by customers</h2>
+
+<div class="flex gap-6 slider">
+<script>
+const reviews=["Crazy fast ⚡","Zero lag","Support instant 💬","Aura Cloud GOAT 🐐","Uptime insane 🚀","Best hosting","Fast deploy","Highly recommend","Premium feel","Perfect for bots"];
+for(let i=0;i<3;i++){
+reviews.forEach(r=>{
+document.write(`<div class="min-w-[280px] p-6 bg-white/5 border border-white/10 rounded-2xl glow hover-fade">
+⭐⭐⭐⭐⭐<p class='mt-3 text-white/70'>${r}</p><p class='mt-2 font-bold text-aura'>Aura Cloud™ User</p></div>`)
+})
+}
+</script>
+</div>
+</section>
+
+<!-- DISCORD -->
+<section id="contact" class="max-w-5xl mx-auto px-8 mb-32 reveal">
+<div class="p-14 bg-gradient-to-r from-[#5865F2]/40 to-aura/30 border border-white/10 rounded-3xl glow hover-fade text-center">
+<i class="fa-brands fa-discord text-6xl text-[#5865F2] mb-4"></i>
+<h2 class="text-4xl font-black mb-4">Join Aura Cloud Discord</h2>
+<p class="text-white/70 mb-8">Community, support, tickets, updates & giveaways 🎉</p>
+<a href="https://discord.gg/qJVqpdnHBM" target="_blank"
+class="hover-fade px-10 py-4 rounded-xl bg-[#5865F2] glow font-black inline-flex items-center gap-3">
+<i class="fa-brands fa-discord text-2xl"></i> Join Server
+</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+  <footer class="border-t border-white/10 pt-20 pb-10 bg-[#070b14]">
+
+    <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-5 gap-12">
+
+      <!-- Brand Column -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="logo.webp" class="w-10">
+          <div>
+            <h3 class="text-xl font-black text-aura">Aura Cloud™</h3>
+            <p class="text-xs text-white/40">Since 2026</p>
+          </div>
+        </div>
+
+        <p class="text-white/60 text-sm leading-relaxed mb-6">
+          Enterprise-grade hosting solutions delivering exceptional performance,
+          reliability, and security with dedicated 24/7 expert support.
+        </p>
+
+        <div class="flex gap-6 text-white/40 text-sm">
+          <span>🛡 DDoS Protected</span>
+          <span>⚡ 99.9% Uptime</span>
+          <span>🎧 24/7 Support</span>
+        </div>
+
+        <!-- Socials -->
+        <div class="flex gap-4 mt-6">
+          <a href="https://discord.com/invite/qJVqpdnHBM" target="_blank"
+             class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#5865F2]/20 border border-[#5865F2]/40 text-[#5865F2] hover:bg-[#5865F2]/30 transition">
+            <i class="fa-brands fa-discord text-lg"></i>
+            <span class="text-sm font-semibold">Join our Discord</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="font-bold mb-4 border-l-4 border-aura pl-3">Company</h4>
+        <ul class="space-y-3 text-white/60">
+          <li><a href="index.html" class="hover:text-white">Home</a></li>
+          <li><a href="About Us
+" class="hover:text-white">About Us</a></li>
+          <li><a href="Services.html" class="hover:text-white">Services</a></li>
+          <li><a href="Contact.html" class="hover:text-white"> Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="font-bold mb-4 border-l-4 border-aurablue pl-3">Services</h4>
+        <ul class="space-y-3 text-white/60">
+          <li><a href="#" class="hover:text-white">Game Servers</a></li>
+          <li><a href="#" class="hover:text-white">Cloud VPS</a></li>
+          <li><a href="#" class="hover:text-white">Proxy Hosting</a></li>
+          <li><a href="#" class="hover:text-white">Discord Bots</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="font-bold mb-4 border-l-4 border-purple-500 pl-3">Legal</h4>
+        <ul class="space-y-3 text-white/60">
+          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-white">SLA Agreement</a></li>
+          <li><a href="#" class="hover:text-white">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="font-bold mb-4 border-l-4 border-green-400 pl-3">Stay Updated</h4>
+        <p class="text-white/60 text-sm mb-4">
+          Join our discord server for news and exclusive offers.
+        </p>
+
+      
+
+        <div class="mt-6 text-white/50 text-sm space-y-2">
+      
+          <p>📍 Colombo, Sri Lanka</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div class="max-w-7xl mx-auto px-8 mt-16 border-t border-white/10 pt-8">
+
+      <p class="text-white/50 mb-6">Secure Payment Methods</p>
+
+      <!-- Payments -->
+      <div class="flex flex-wrap gap-4 text-3xl text-white/40 mb-10">
+        <i class="fa-brands fa-cc-visa"></i>
+        <i class="fa-brands fa-cc-mastercard"></i>
+        <i class="fa-brands fa-cc-paypal"></i>
+        <i class="fa-brands fa-google-pay"></i>
+        <i class="fa-brands fa-cc-apple-pay"></i>
+        <i class="fa-brands fa-bitcoin"></i>
+      </div>
+
+      <!-- Bottom Badges -->
+      <div class="flex justify-between items-center flex-wrap gap-6 text-sm text-white/40">
+        <p>© 2026 Aura Cloud™. All rights reserved.</p>
+
+        <div class="flex gap-4">
+          <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg">🔒 SSL Secured</span>
+          <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg">🌍 Global CDN</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+<script type="module">
+  // =================== Scroll Reveal ===================
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealNow() {
+    reveals.forEach(r => {
+      if (r.getBoundingClientRect().top < window.innerHeight - 80) {
+        r.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealNow);
+  window.addEventListener("load", revealNow);
+
+  // =================== Counter Animation ===================
+  document.querySelectorAll("[data-count]").forEach(counter => {
+    let target = parseFloat(counter.dataset.count);
+    let c = 0, inc = target / 100;
+
+    let int = setInterval(() => {
+      c += inc;
+
+      counter.innerText =
+        (target == 99.9 ? c.toFixed(1) : Math.floor(c));
+
+      if (c >= target) {
+        counter.innerText =
+          target + (target == 3 ? "ms" : target == 99.9 ? "%" : "+");
+
+        clearInterval(int);
+      }
+    }, 20);
+  });
+
+  // =================== Landing Load Animation ===================
+  window.addEventListener("load", () => {
+    document.querySelectorAll(".load-in").forEach(el => {
+      el.classList.add("show");
+    });
+  });
+
+  // =================== Fake Live Dashboard Numbers ===================
+  function animateValue(id, min, max, suffix = "") {
+    const el = document.getElementById(id);
+
+    setInterval(() => {
+      let val = Math.floor(Math.random() * (max - min) + min);
+      el.innerText = val + suffix;
+    }, 2000);
+  }
+
+  animateValue("players", 120, 400);
+  animateValue("cpu", 10, 60, "%");
+
+  setInterval(() => {
+    let ram = (Math.random() * 2 + 2).toFixed(1);
+    document.getElementById("ram").innerText = ram + "GB";
+  }, 2000);
+
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } 
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBMiakLweeHowlwOW8uLoffc5A53ObxfFg",
+  authDomain: "aura-cloud-web-logins.firebaseapp.com",
+  projectId: "aura-cloud-web-logins",
+  storageBucket: "aura-cloud-web-logins.firebasestorage.app",
+  messagingSenderId: "979527952980",
+  appId: "1:979527952980:web:46633454fb9a8b44695bc1"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+const btn = document.getElementById("authBtn");
+
+onAuthStateChanged(auth, (user) => {
+
+  if (user) {
+    // ✅ LOGGED IN → show Client Area button
+    btn.innerText = "Client Area";
+    btn.href = "dashboard.html";
+
+  } else {
+    // ❌ NOT LOGGED IN → show Login
+    btn.innerText = "Login";
+    btn.href = "login.html";
+  }
+});
+</script>
+
+
+</body>
+</html>

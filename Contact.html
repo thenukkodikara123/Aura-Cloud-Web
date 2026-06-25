@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Aura Cloud™</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        dark:"#05050c",
+        aura:"#a855f7",
+        aurablue:"#38bdf8"
+      }
+    }
+  }
+}
+
+
+
+</script>
+
+<style>
+body{background:#05050c}
+.glow{box-shadow:0 0 30px rgba(168,85,247,.35)}
+.hover-fade{transition:.3s}
+.hover-fade:hover{transform:translateY(-4px);box-shadow:0 0 40px rgba(168,85,247,.5)}
+
+/* Scroll Reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.active{
+  opacity:1;
+  transform:none;
+}
+</style>
+</head>
+
+<body class="text-white">
+
+<!-- NAV -->
+<header class="fixed top-0 w-full bg-dark/70 backdrop-blur border-b border-white/10 z-50">
+  <div class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <img src="logo.webp" class="w-9">
+      <h1 class="font-black text-aura text-xl">Aura Cloud™</h1>
+    </div>
+    <nav class="hidden md:flex gap-10 text-white/70 font-semibold">
+      <a href="index.html" class="hover:text-white">Home</a>
+      <a href="Services.html" class="hover:text-white">Services</a>
+      <a href="About Us.html" class="hover:text-white">About Us</a>
+      <a href="contact.html" class="text-aura">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="pt-40 pb-20 text-center max-w-4xl mx-auto px-6 reveal">
+  <h2 class="text-5xl font-black mb-6">Need Help? <span class="text-aura">Contact Us</span></h2>
+  <p class="text-white/60 text-lg">
+    Our support team is available 24/7 to help you with hosting, servers, and technical questions.
+  </p>
+</section>
+
+<!-- CONTACT OPTIONS -->
+<section class="max-w-6xl mx-auto px-8 grid md:grid-cols-3 gap-10 mb-28">
+
+  <!-- DISCORD -->
+  <div class="bg-white/5 border border-white/10 rounded-3xl p-10 glow hover-fade text-center reveal">
+    <i class="fa-brands fa-discord text-4xl text-[#5865F2] mb-4"></i>
+    <h3 class="text-xl font-bold mb-3">Join Our Discord</h3>
+    <p class="text-white/60 mb-6">Fastest way to reach us and get community support.</p>
+    <a href="https://discord.com/invite/qJVqpdnHBM" target="_blank"
+       class="px-6 py-3 rounded-xl bg-[#5865F2] font-bold hover-fade inline-block">
+      Join Server
+    </a>
+  </div>
+
+  <!-- TICKET -->
+  <div class="bg-white/5 border border-white/10 rounded-3xl p-10 glow hover-fade text-center reveal">
+    <i class="fa-solid fa-ticket text-4xl text-aura mb-4"></i>
+    <h3 class="text-xl font-bold mb-3">Create a Ticket</h3>
+    <p class="text-white/60 mb-6">Open a support ticket inside our Discord for direct help.</p>
+    <a href="https://discord.com/invite/qJVqpdnHBM" target="_blank"
+       class="px-6 py-3 rounded-xl bg-aura font-bold hover-fade inline-block">
+      Open Ticket
+    </a>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="bg-white/5 border border-white/10 rounded-3xl p-10 glow hover-fade text-center reveal">
+    <i class="fa-solid fa-envelope text-4xl text-aurablue mb-4"></i>
+    <h3 class="text-xl font-bold mb-3">Email Support</h3>
+    <p class="text-white/60 mb-6">Prefer email? Send us a message below.</p>
+  </div>
+
+</section>
+
+<!-- EMAIL FORM -->
+<section class="max-w-3xl mx-auto px-8 pb-32 reveal">
+  <div class="bg-white/5 border border-white/10 rounded-3xl p-10 glow">
+    <h3 class="text-2xl font-bold mb-6 text-center">Send a Message</h3>
+
+    <form action="https://formsubmit.co/e0a4574675924b38a35c1be78cd8b1dc" method="POST" class="space-y-5">
+
+      <input type="hidden" name="_subject" value="New Message from Aura Cloud Contact Form">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+
+      <input type="text" name="Name" placeholder="Your Name" required
+        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white/70 outline-none focus:border-aura">
+
+      <input type="email" name="Email" placeholder="Your Email" required
+        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white/70 outline-none focus:border-aura">
+
+      <textarea name="Message" rows="5" placeholder="Your Message" required
+        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white/70 outline-none focus:border-aura"></textarea>
+
+      <button type="submit"
+        class="w-full py-3 rounded-xl bg-aura glow font-bold hover-fade">
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+  <!-- FOOTER -->
+    <footer class="border-t border-white/10 pt-20 pb-10 bg-[#070b14]">
+
+      <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-5 gap-12">
+
+        <!-- Brand Column -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="logo.webp" class="w-10">
+            <div>
+              <h3 class="text-xl font-black text-aura">Aura Cloud™</h3>
+              <p class="text-xs text-white/40">Since 2026</p>
+            </div>
+          </div>
+
+          <p class="text-white/60 text-sm leading-relaxed mb-6">
+            Enterprise-grade hosting solutions delivering exceptional performance,
+            reliability, and security with dedicated 24/7 expert support.
+          </p>
+
+          <div class="flex gap-6 text-white/40 text-sm">
+            <span>🛡 DDoS Protected</span>
+            <span>⚡ 99.9% Uptime</span>
+            <span>🎧 24/7 Support</span>
+          </div>
+
+          <!-- Socials -->
+          <div class="flex gap-4 mt-6">
+            <a href="https://discord.com/invite/qJVqpdnHBM" target="_blank"
+               class="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#5865F2]/20 border border-[#5865F2]/40 text-[#5865F2] hover:bg-[#5865F2]/30 transition">
+              <i class="fa-brands fa-discord text-lg"></i>
+              <span class="text-sm font-semibold">Join our Discord</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h4 class="font-bold mb-4 border-l-4 border-aura pl-3">Company</h4>
+          <ul class="space-y-3 text-white/60">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="About Us
+  " class="hover:text-white">About Us</a></li>
+            <li><a href="Services.html" class="hover:text-white">Services</a></li>
+            <li><a href="Contact.html" class="hover:text-white"> Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="font-bold mb-4 border-l-4 border-aurablue pl-3">Services</h4>
+          <ul class="space-y-3 text-white/60">
+            <li><a href="#" class="hover:text-white">Game Servers</a></li>
+            <li><a href="#" class="hover:text-white">Cloud VPS</a></li>
+            <li><a href="#" class="hover:text-white">Proxy Hosting</a></li>
+            <li><a href="#" class="hover:text-white">Discord Bots</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+          <h4 class="font-bold mb-4 border-l-4 border-purple-500 pl-3">Legal</h4>
+          <ul class="space-y-3 text-white/60">
+            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+            <li><a href="#" class="hover:text-white">SLA Agreement</a></li>
+            <li><a href="#" class="hover:text-white">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4 class="font-bold mb-4 border-l-4 border-green-400 pl-3">Stay Updated</h4>
+          <p class="text-white/60 text-sm mb-4">
+            Join our discord server for news and exclusive offers.
+          </p>
+
+
+
+          <div class="mt-6 text-white/50 text-sm space-y-2">
+
+            <p>📍 Colombo, Sri Lanka</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <div class="max-w-7xl mx-auto px-8 mt-16 border-t border-white/10 pt-8">
+
+        <p class="text-white/50 mb-6">Secure Payment Methods</p>
+
+        <!-- Payments -->
+        <div class="flex flex-wrap gap-4 text-3xl text-white/40 mb-10">
+          <i class="fa-brands fa-cc-visa"></i>
+          <i class="fa-brands fa-cc-mastercard"></i>
+          <i class="fa-brands fa-cc-paypal"></i>
+          <i class="fa-brands fa-google-pay"></i>
+          <i class="fa-brands fa-cc-apple-pay"></i>
+          <i class="fa-brands fa-bitcoin"></i>
+        </div>
+
+        <!-- Bottom Badges -->
+        <div class="flex justify-between items-center flex-wrap gap-6 text-sm text-white/40">
+          <p>© 2026 Aura Cloud™. All rights reserved.</p>
+
+          <div class="flex gap-4">
+            <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg">🔒 SSL Secured</span>
+            <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg">🌍 Global CDN</span>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+const reveals = document.querySelectorAll(".reveal");
+function revealOnScroll(){
+  reveals.forEach(el=>{
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 80){
+      el.classList.add("active");
+    }
+  });
+}
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>
+
+</body>
+</html>
